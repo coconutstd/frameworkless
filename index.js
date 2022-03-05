@@ -2,6 +2,7 @@ import getTodos from "./getTodos.js";
 import todosView from "./view/todos.js";
 import counterView from "./view/counter.js";
 import filtersView from "./view/filters.js";
+import applyDiff from "./applyDiff.js";
 
 import registry from "./registry.js";
 
@@ -18,13 +19,13 @@ const render = () => {
   window.requestAnimationFrame(() => {
     const main = document.querySelector(".todoapp");
     const newMain = registry.renderRoot(main, state);
-    main.replaceWith(newMain);
+    applyDiff(document.body, main, newMain);
   });
 };
 
 window.setInterval(() => {
   state.todos = getTodos();
   render();
-}, 5000);
+}, 1000);
 
 render();
