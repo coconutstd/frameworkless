@@ -18,19 +18,19 @@ const getTodoElement = (todo, index, events) => {
 
   if (completed) {
     element.classList.add("completed");
-
     element.querySelector("input.toggle").checked = true;
   }
 
-  const handler = (e) => events.deleteItem(index);
-
-  element.querySelector("button.destroy").addEventListener("click", handler);
+  element.querySelector("button.destroy").dataset.index = index;
 
   return element;
 };
 
-export default (targetElement, { todos }, events) => {
+export default (targetElement, state, events) => {
+  const { todos } = state;
+  const { deleteItem } = events;
   const newTodolist = targetElement.cloneNode(true);
+
   newTodolist.innerHTML = "";
 
   todos
@@ -38,6 +38,12 @@ export default (targetElement, { todos }, events) => {
     .forEach((element) => {
       newTodolist.appendChild(element);
     });
+
+  newTodolist.addEventListener("click", (e) => {
+    if (e.target.matches("button.destroy")) {
+      deleteItem(e.target.dataset.index);
+    }
+  });
 
   return newTodolist;
 };
