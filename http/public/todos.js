@@ -4,7 +4,7 @@ const HEADERS = {
   "Content-Type": "application/json",
 };
 
-const BASE_URL = "/api/todos";
+const BASE_URL = "http://localhost:8080/api/todos";
 
 const list = () => http.get(BASE_URL);
 
@@ -21,8 +21,8 @@ const update = (newTodo) => {
   return http.patch(url, newTodo, HEADERS);
 };
 
-const deleteTOdo = (id) => {
-  const url = `${BASE_URL}/${newTodo.id}`;
+const deleteTodo = (id) => {
+  const url = `${BASE_URL}/${id}`;
   return http.delete(url, HEADERS);
 };
 
