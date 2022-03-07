@@ -1,3 +1,3 @@
-import HelloWorld from "./components/HelloWorld.js";
+import GitHubAvatar from "./components/GitHubAvatar.js";
 
-window.customElements.define("hello-world", HelloWorld);
+window.customElements.define("github-avatar", GitHubAvatar);
