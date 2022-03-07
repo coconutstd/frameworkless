@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const uuidv4 = require("uuid/v4");
 const findIndex = require("lodash.findindex");
+const cors = require("cors");
 
 const PORT = 8080;
 
@@ -10,6 +11,7 @@ let todos = [];
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/api/todos", (req, res) => {
   res.send(todos);
