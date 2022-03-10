@@ -22,6 +22,7 @@ export default () => {
       fragment,
       component,
     });
+
     return router;
   };
 
@@ -30,14 +31,18 @@ export default () => {
     return router;
   };
 
+  router.navigate = (fragment) => {
+    window.location.hash = fragment;
+  };
+
   router.start = () => {
     window.addEventListener("hashchange", checkRoutes);
-
     if (!window.location.hash) {
       window.location.hash = "#/";
     }
 
     checkRoutes();
   };
+
   return router;
 };
