@@ -4,7 +4,20 @@ export default (container) => {
   };
 
   const list = () => {
-    container.textContent = "This is List page";
+    container.textContent = "This is List Page";
+  };
+
+  const detail = (params) => {
+    const { id } = params;
+    container.textContent = `This is Detail Page with Id ${id}`;
+  };
+
+  const anotherDetail = (params) => {
+    const { id, anotherId } = params;
+    container.textContent = `
+        This is Detail Page with Id ${id} 
+        and AnotherId ${anotherId}
+      `;
   };
 
   const notFound = () => {
@@ -14,6 +27,8 @@ export default (container) => {
   return {
     home,
     list,
+    detail,
+    anotherDetail,
     notFound,
   };
 };
